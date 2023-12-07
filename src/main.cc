@@ -332,7 +332,7 @@ NAN_METHOD(construct_mm_parent_block_blob) { // (parentBlockTemplate, blob_type,
     if (blob_type == BLOB_TYPE_CRYPTONOTE_LOKI || blob_type == BLOB_TYPE_CRYPTONOTE_XTNC) b.miner_tx.version = cryptonote::loki_version_2;
   
     block b2 = AUTO_VAL_INIT(b2);
-    b2.set_blob_type(BLOB_TYPE_FORKNOTE2);
+    b2.set_blob_type(blob_type);
     if (!parse_and_validate_block_from_blob(child_input, b2)) return THROW_ERROR_EXCEPTION("construct_mm_parent_block_blob: Failed to parse child block");
 
     if (!fillExtraMM(b, b2)) return THROW_ERROR_EXCEPTION("construct_mm_parent_block_blob: Failed to add merged mining tag to parent block extra");
