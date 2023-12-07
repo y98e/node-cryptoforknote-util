@@ -365,7 +365,7 @@ NAN_METHOD(construct_mm_child_block_blob) { // (shareBuffer, blob_type, childBlo
     if (!parse_and_validate_block_from_blob(block_template_blob, b)) return THROW_ERROR_EXCEPTION("construct_mm_child_block_blob: Failed to parse parent block");
 
     block b2 = AUTO_VAL_INIT(b2);
-    b2.set_blob_type(BLOB_TYPE_FORKNOTE2);
+    b2.set_blob_type(blob_type);
     if (!parse_and_validate_block_from_blob(child_block_template_blob, b2)) return THROW_ERROR_EXCEPTION("construct_mm_child_block_blob: Failed to parse child block");
 
     if (!mergeBlocks(b, b2, std::vector<crypto::hash>())) return THROW_ERROR_EXCEPTION("construct_mm_child_block_blob: Failed to postprocess mining block");
